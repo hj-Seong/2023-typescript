@@ -124,6 +124,20 @@ console.log(jhon, green);
 // 인터페이스 확장을 위한 연습
 // Person을 사용해서, Worker 인터페이스 작성
 // Worker 인터페이스는 job 속성을 string 자료형으로 가진다
+interface Workers extends Person {
+    job:string
+}
 
+// let blue:Workers 선언 및 값 할당하기
+// 다른 Worker의 인터페이스가 있으므로, Workers로 바꿔서 작성
+let blue: Workers = {
+    name: "blue",
+    job : "frontend"
+}
 
-// let blue:Worker 선언 및 값 할당하기
+let numArray: number[] = [1,2,3,4];
+// 객체의 배열을 만들때, 인터페이스를 사용해서 만들수 있다
+let objectArray: Person[] = [
+    {name: "홍길동"},{name:"성춘향"}
+]
+console.log(objectArray.map((o)=>o.name))
