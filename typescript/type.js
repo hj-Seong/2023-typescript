@@ -40,6 +40,28 @@ console.log(myPerson.name);
 function printName(person) {
     console.log(person.name);
     // if문을 사용해서 age값이 있다면 console.log로 출력
+    if (person.age !== undefined) {
+        console.log(person.age);
+    }
 }
 printName(person);
 // printName()을 사용해서 myPerson 출력
+printName(myPerson);
+// 화살표함수, 익명함수를 만들어서 변수에 할당해서 쓰는 내용
+// 화살표함수나 익명함수의 경우 함수의 이름이 없기때문에,
+// 매개변수뒤에 적어줌
+var loginUser = function (id, pw) {
+    console.log("로그인했습니다");
+    return true;
+};
+// 동일한 내용 인터페이스로 작성
+var loginUserInter;
+loginUserInter = function (id, pw) {
+    // 매개변수의 자료형을 기록했기에 적지않아도 괜찮다
+    console.log(id, "로그인했습니다");
+    // 미리 반환값을 기록했기에 반환값을 잘못적지않았는지 확인가능
+    return true;
+};
+// 인터페이스로 함수의 타입을 지정해도, 
+// 필요에 따라서 매개변수의 내용이 달라진다면 수정할수 있다
+// ex) 자료형, 매개변수의 개수
