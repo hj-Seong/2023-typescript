@@ -89,3 +89,41 @@ loginUserInter = function(id, pw) {
 // 인터페이스로 함수의 타입을 지정해도, 
 // 필요에 따라서 매개변수의 내용이 달라진다면 수정할수 있다
 // ex) 자료형, 매개변수의 개수
+
+// 인터페이스의 확장
+// 위에 작성한 Person을 확장하여 사용
+// extends를 통해 확장, Person에 있는 속성을 적어주지않아도
+// Developer에 들어가 있다
+interface Postion extends Developer{
+    // 상속(확장)한 인터페이스를 확장할수 있다.
+    // 한번에 여러개 확장할수 있다 
+    // interface Developer extends Person, Position
+    // 확장할때는 이전의 인터페이스에 추가하면 
+    // 작성한 객체에 오류가 생길수 있으니 가능하면
+    // 새로 인터페이스를 만들어서 확장한다
+    position: string;
+}
+
+interface Developer extends Person{
+    skill: string;
+}
+
+let jhon:Developer = {
+    // Developer의 내용
+    skill: "typescript",
+    // Person의 내용
+    name : "jhon"
+} 
+let green = {} as Developer;
+green.name = "green";
+green.skill = "javascript";
+// green.text = "Developer에 없는 속성은 접근 불가"
+
+console.log(jhon, green);
+
+// 인터페이스 확장을 위한 연습
+// Person을 사용해서, Worker 인터페이스 작성
+// Worker 인터페이스는 job 속성을 string 자료형으로 가진다
+
+
+// let blue:Worker 선언 및 값 할당하기

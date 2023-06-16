@@ -62,6 +62,18 @@ loginUserInter = function (id, pw) {
     // 미리 반환값을 기록했기에 반환값을 잘못적지않았는지 확인가능
     return true;
 };
-// 인터페이스로 함수의 타입을 지정해도, 
-// 필요에 따라서 매개변수의 내용이 달라진다면 수정할수 있다
-// ex) 자료형, 매개변수의 개수
+var jhon = {
+    // Developer의 내용
+    skill: "typescript",
+    // Person의 내용
+    name: "jhon"
+};
+var green = {};
+green.name = "green";
+green.skill = "javascript";
+// green.text = "Developer에 없는 속성은 접근 불가"
+console.log(jhon, green);
+// 인터페이스 확장을 위한 연습
+// Person을 사용해서, Worker 인터페이스 작성
+// Worker 인터페이스는 job 속성을 string 자료형으로 가진다
+// let blue:Worker 선언 및 값 할당하기
