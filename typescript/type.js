@@ -1,3 +1,18 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // 타입스크립트는 자바스크립트의 변수와 함수에 타입을 설정
 console.log("안녕");
 // 변수를 지정할때 타입을 지정하여 원하는 자료형만 넣을수 있다
@@ -105,20 +120,60 @@ var MyClass = /** @class */ (function () {
 }());
 // 타입스크립트로 작성하는 클래스
 // Accessor : 접근할수 없는 속성(private)에 get과 set을 이용하여 접근
+// get과 set은 .속성이름으로 접근할수 있고 이름은 겹치지 않게 작성
 var MyTypeClass = /** @class */ (function () {
     function MyTypeClass() {
         this.money = 0;
     }
-    // set과 get을 통해 접근
-    MyTypeClass.prototype.getname = function () {
-        return this.name;
-    };
-    MyTypeClass.prototype.setname = function (newValue) {
-        this.name = newValue;
-    };
+    Object.defineProperty(MyTypeClass.prototype, "getname", {
+        // set과 get을 통해 접근
+        get: function () {
+            return this.name;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(MyTypeClass.prototype, "setname", {
+        set: function (newValue) {
+            this.name = newValue;
+        },
+        enumerable: false,
+        configurable: true
+    });
     return MyTypeClass;
 }());
 var mytypeclass = new MyTypeClass();
 mytypeclass.money = 1000;
-mytypeclass.setname("green");
+mytypeclass.setname = "green";
 console.log(mytypeclass);
+// 추상 클래스 
+// 클래스 중에서도 메소드 값이 비어있는 클래스
+// abstract : 값이 비어있는 메소드 앞에 붙여준다.
+var Developer2 = /** @class */ (function () {
+    function Developer2() {
+    }
+    // 추상메소드가 아닌 일반메소드는 {}안에 실행값을 적어준다
+    Developer2.prototype.drink = function () {
+        console.log('drink');
+    };
+    return Developer2;
+}());
+// 인터페이스나 추상클래스를 상속받을때,
+// 채워야할 메소드를 Quick Fix를 통해 채워서 쓸 수 있다
+var FrontEndDeveloper = /** @class */ (function (_super) {
+    __extends(FrontEndDeveloper, _super);
+    function FrontEndDeveloper() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    FrontEndDeveloper.prototype.coding = function () {
+        console.log("develop web");
+    };
+    FrontEndDeveloper.prototype.design = function () {
+        console.log("design web");
+    };
+    return FrontEndDeveloper;
+}(Developer2));
+var frontend = new FrontEndDeveloper();
+frontend.coding();
+frontend.design();
+frontend.drink();

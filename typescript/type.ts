@@ -161,20 +161,50 @@ class MyClass {
 
 // 타입스크립트로 작성하는 클래스
 // Accessor : 접근할수 없는 속성(private)에 get과 set을 이용하여 접근
+// get과 set은 .속성이름으로 접근할수 있고 이름은 겹치지 않게 작성
 class MyTypeClass {
     // 속성
-    private name:string;
-    money:number = 0;
+    private name:string
+    money:number = 0
 
     // set과 get을 통해 접근
-    getname():string {
+    get getname():string {
         return this.name;
     }
-    setname(newValue:string):void {
+    set setname(newValue:string) {
         this.name = newValue;
     }
 }
 const mytypeclass = new MyTypeClass();
 mytypeclass.money = 1000;
-mytypeclass.setname("green")
+mytypeclass.setname = "green"
 console.log(mytypeclass)
+
+// 추상 클래스 
+// 클래스 중에서도 메소드 값이 비어있는 클래스
+// abstract : 값이 비어있는 메소드 앞에 붙여준다.
+abstract class Developer2 {
+    // {}가 없는 메소드 - 실행할 내용을 적지않음
+    // 상속받을 클래스에서 내용을 적도록 안내
+    abstract coding():void;
+    
+    // 추상메소드가 아닌 일반메소드는 {}안에 실행값을 적어준다
+    drink(): void {
+        console.log('drink');
+    }
+}
+
+// 인터페이스나 추상클래스를 상속받을때,
+// 채워야할 메소드를 Quick Fix를 통해 채워서 쓸 수 있다
+class FrontEndDeveloper extends Developer2 {
+    coding(): void {
+        console.log("develop web")
+    }
+    design(): void {
+        console.log("design web")
+    }
+}
+const frontend = new FrontEndDeveloper();
+frontend.coding();
+frontend.design();
+frontend.drink();
