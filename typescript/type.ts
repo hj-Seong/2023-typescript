@@ -208,3 +208,12 @@ const frontend = new FrontEndDeveloper();
 frontend.coding();
 frontend.design();
 frontend.drink();
+
+// 제네릭 
+// 타입(자료형)을 함수의 파라미터처럼 사용하는 것
+function getText<T>(text:T): T {
+    return text
+}
+console.log(getText<string>("Hi"));
+console.log(getText<number>(10));
+// boolean 값을 넣어서 console.log로 확인

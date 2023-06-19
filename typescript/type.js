@@ -177,3 +177,11 @@ var frontend = new FrontEndDeveloper();
 frontend.coding();
 frontend.design();
 frontend.drink();
+// 제네릭 
+// 타입(자료형)을 함수의 파라미터처럼 사용하는 것
+function getText(text) {
+    return text;
+}
+console.log(getText("Hi"));
+console.log(getText(10));
+// boolean 값을 넣어서 console.log로 확인
