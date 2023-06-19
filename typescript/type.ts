@@ -141,3 +141,40 @@ let objectArray: Person[] = [
     {name: "홍길동"},{name:"성춘향"}
 ]
 console.log(objectArray.map((o)=>o.name))
+
+// 타입스크립트에서 클래스
+// 자바스크립트에서 클래스
+// : 미리 속성과 메소드를 지정하여 객체를 만들수 있는 형태
+class MyClass {
+    // 속성의 값
+    name = "";
+    money = 0;
+    //constructor를 통해서 객체를 생성할때 속성의 값 지정
+    constructor (name:any) {
+        this.name = name;
+    }
+    // 함수형태로 메소드를 만들어서 사용
+    setMoney = (money:any) =>{
+        this.money = money;
+    }
+}
+
+// 타입스크립트로 작성하는 클래스
+// Accessor : 접근할수 없는 속성(private)에 get과 set을 이용하여 접근
+class MyTypeClass {
+    // 속성
+    private name:string;
+    money:number = 0;
+
+    // set과 get을 통해 접근
+    getname():string {
+        return this.name;
+    }
+    setname(newValue:string):void {
+        this.name = newValue;
+    }
+}
+const mytypeclass = new MyTypeClass();
+mytypeclass.money = 1000;
+mytypeclass.setname("green")
+console.log(mytypeclass)
