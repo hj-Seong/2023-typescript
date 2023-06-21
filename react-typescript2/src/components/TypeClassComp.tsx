@@ -4,12 +4,14 @@ import React, { Component } from 'react'
 interface CounterProps {
     startNumber: number;
     name? :string;
+    check? :boolean;
 }
 // state를 사용하기위해서 interface를 지정해서 넣어야한다
 // interface에 이름과 타입이 없으면 쓸수 없다
 interface CounterState {
     number: number;
     text : string;
+    array: number[];
 }
 
 // 클래스형의 제너릭의 자료형(타입)을 지정
@@ -26,7 +28,8 @@ export default class TypeClassComp
     super(props)
     this.state = {
         number : props.startNumber,
-        text :"hi"
+        text :"hi",
+        array : [1,2,3],
     }
   }
 
@@ -41,8 +44,14 @@ export default class TypeClassComp
         {/** props의 boolean 값 check를 받아와서 삼항연산자로
          * 확인/미확인을 출력하세요
          */}
+        <p>{ this.props.check ? "확인" : "미확인"}</p>
 
          {/**state에 배열값 [1,2,3]를 넣어 li태그로 출력하세요 */}
+         {
+            this.state.array.map((num)=>(
+                <li>{num}</li>
+            ))
+         }
       </div>
     )
   }
