@@ -39,8 +39,9 @@ export default class TypeClassComp
     this.setState({text:e.target.value})
   }
 
-  handleNum = () => {
-    
+  handleNum = (e:React.ChangeEvent<HTMLInputElement>) => {
+    // setState에 넣을때 자료형이 다르면 오류를 출력한다ㅏ
+    this.setState({number : parseInt(e.target.value)})
   }
 
   render() {

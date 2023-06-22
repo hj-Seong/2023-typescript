@@ -18,6 +18,13 @@ export default function TypeFuncComp(props:CounterProps) {
   // 만약 count에 들어갈 타입이 두개이상이라면 <>안에 직접적용
   const [count, setCount] = useState<number|undefined>(5)
   const [array, setArray] = useState([1,2,3]);
+
+  // 이벤트 객체를 사용하는 메소드,
+  // 이벤트 객체의 타입을 동일하게 가져와서 사용
+  const InputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value)
+  }
+
   return (
     <div>
         <h3>TypeFuncComp</h3>
@@ -34,6 +41,11 @@ export default function TypeFuncComp(props:CounterProps) {
                 <li>{num}</li>
             ))
         }
+
+        <h3>글자확인 : {text}</h3>
+        <input type="text" 
+          onChange={(e)=>{setText(e.target.value)}}
+        />
     </div>
   )
 }
