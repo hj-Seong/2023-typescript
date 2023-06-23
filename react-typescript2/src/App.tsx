@@ -5,6 +5,7 @@ import NoProps from './components/NoProps';
 import TypeClassComp from './components/TypeClassComp';
 import TypeFuncComp from './components/TypeFuncComp';
 import TypeArrowFuncComp from './components/TypeArrowFuncComp';
+import FetchComp from './components/FetchComp';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <TypeClassComp startNumber={3} name='홍길동' check/>
       <TypeFuncComp startNumber={0} />
       <TypeArrowFuncComp startNumber={5}/>
+      <hr />
+      <FetchComp />
     </div>
   );
 }

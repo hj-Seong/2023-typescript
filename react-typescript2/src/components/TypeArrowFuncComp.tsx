@@ -9,7 +9,7 @@ interface CounterProps {
 // 클래스형컴포넌트와 비슷하게 리액트에서 제공하는 React.FC<Props>을
 // 이용하여 작성할 수 있다
 const TypeArrowFuncComp: React.FC<CounterProps> = (props) => {
-    // useState()는 사용방식이 동일
+    // useState()는 사용방식이 동일하다
     return <div> 
         <h3> {props.startNumber}</h3>
          </div>
